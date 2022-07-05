@@ -12,16 +12,27 @@
         var buttonStart = document.getElementById('button-start');
         var buttonStop = document.getElementById('button-stop');
         var buttonReset = document.getElementById('button-reset');
+        buttonStop.disabled = true;
+        buttonReset.disabled = true;
         var Interval ;
       
         buttonStart.onclick = function() {
           clearInterval(Interval);
            Interval = setInterval(startTimer, 10);
+           buttonStart.disabled = true;
+           buttonStop.disabled = false;
+           buttonReset.disabled = false;
         }
         
         buttonStop.onclick = function() {
-            clearInterval(Interval);
-            buttonStop.innerHTML = "continue";
+            if(buttonStop.textContent == "pause"){
+                clearInterval(Interval);
+                buttonStop.innerHTML = "continue";
+            }else{
+                clearInterval(Interval);
+                Interval = setInterval(startTimer, 10);
+                buttonStop.innerHTML = "pause";
+            }
         }
         
       
@@ -34,6 +45,9 @@
             appendSeconds.innerHTML = seconds;
             appendMinutes.innerHTML = minute;
             appendhours.innerHTML = hour;
+            buttonStart.disabled = false;
+            buttonStop.disabled = true;
+            buttonReset.disabled = true;
         }
         
          
@@ -68,10 +82,6 @@
             minute = 0;
             appendhours.innerHTML = '0' + hour;
           }
-
-          
-          
-
         
         }
         
