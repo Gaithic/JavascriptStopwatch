@@ -19,17 +19,21 @@
            Interval = setInterval(startTimer, 10);
         }
         
-          buttonStop.onclick = function() {
-             clearInterval(Interval);
+        buttonStop.onclick = function() {
+            clearInterval(Interval);
+            buttonStop.innerHTML = "continue";
         }
         
       
         buttonReset.onclick = function() {
            clearInterval(Interval);
-          tens = "00";
+            tens = "00";
             seconds = "00";
-          appendTens.innerHTML = tens;
+            minute = "00";
+            hour = "00";
             appendSeconds.innerHTML = seconds;
+            appendMinutes.innerHTML = minute;
+            appendhours.innerHTML = hour;
         }
         
          
